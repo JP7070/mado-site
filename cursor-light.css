@@ -1,0 +1,8 @@
+/* A single diagonal reflection, confined to the thumbnail. */
+.cursor-sheen{position:absolute;inset:-60%;pointer-events:none;z-index:4;opacity:0;background:linear-gradient(115deg,transparent 39%,rgba(255,255,255,.06) 44%,rgba(255,255,255,.38) 49%,rgba(255,255,255,.16) 53%,transparent 60%);transition:opacity .3s ease}
+.cursor-sheen.is-active{opacity:1}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .archive-work .work-image{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+ .archive-work .work-image.is-reflecting{transform:scale(1.035)}
+}
+@media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.cursor-sheen{display:none}}

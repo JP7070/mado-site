@@ -1,0 +1,6 @@
+.prism-layer{position:absolute;inset:0;display:block;z-index:2;overflow:hidden;pointer-events:none;opacity:0;isolation:isolate;background:#000}
+.prism-layer img{position:absolute!important;inset:0;width:100%!important;height:100%!important;object-fit:contain!important;mix-blend-mode:screen;max-width:none}
+@media(prefers-reduced-motion:reduce){.prism-layer{display:none!important}}
+.prism-mobile-base,.prism-mobile-ghost{position:absolute;inset:0;display:block;overflow:hidden;isolation:isolate}
+.prism-mobile-ghost{pointer-events:none;opacity:0;visibility:hidden;z-index:2}
+@media(prefers-reduced-motion:reduce){.prism-mobile-base{filter:none!important}.prism-mobile-ghost{display:none!important}}
