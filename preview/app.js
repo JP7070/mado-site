@@ -13,7 +13,7 @@ const hasIO = 'IntersectionObserver' in window;
 if (!hasIO) document.documentElement.classList.add('no-io');
 
 const inertAll = v => [$('#main'), $('.hd'), $('.ft')].forEach(x => x && (x.inert = v));
-const S = {works: [], filter: 'all', view: 'list', open: null, src: null, token: 0, viaClick: false, busy: false};
+const S = {works: [], filter: 'all', view: 'grid', origin: 'card', open: null, src: null, token: 0, viaClick: false, busy: false};
 const labels = {all: 'すべて', anime: 'TVアニメ', commercial: '広告・CM', spatial: '空間演出'};
 
 const body = document.body, main = $('#main'), list = $('#wlist'), detail = $('#detail'),
@@ -77,6 +77,24 @@ if (hasIO) io = new IntersectionObserver(entries => {
 function observe(el) { if (io) io.observe(el); else el.classList.add('in'); }
 $$('.works-head .display,.about .display').forEach(el => { const m = $('.mask', el); if (m) observe(m); });
 
+/* ---------- reel ---------- */
+const reelTrack = $('#reel-track');
+let reelX = 0, reelOn = false, reelLast = 0, reelY = scrollY;
+function reelLoop(t) {
+  if (!reelOn) return;
+  const dt = Math.min(48, t - reelLast || 16); reelLast = t;
+  const half = reelTrack.scrollWidth / 2;
+  reelX += dt * .026 + (scrollY - reelY) * .35; reelY = scrollY;
+  if (half > 0) reelX = ((reelX % half) + half) % half;
+  reelTrack.style.transform = `translate3d(${-reelX.toFixed(1)}px,0,0)`;
+  requestAnimationFrame(reelLoop);
+}
+if (hasIO && !reduce) new IntersectionObserver(es => {
+  const on = es[0].isIntersecting;
+  if (on && !reelOn) { reelOn = true; reelLast = performance.now(); reelY = scrollY; requestAnimationFrame(reelLoop); }
+  else if (!on) reelOn = false;
+}).observe($('#reel'));
+
 /* ---------- works ---------- */
 function render() {
   list.innerHTML = S.works.map((w, i) => `
@@ -85,6 +103,8 @@ function render() {
 <span class="wtext"><span class="wnum">${pad2(i + 1)}</span><span class="wcat">${esc(w.label)}</span><span class="warrow" aria-hidden="true">↗</span>
 <span class="wtitle">${esc(w.title)}</span><span class="wscope">${esc(w.scope || '')}</span></span></a></li>`).join('');
   $('#hero-count').textContent = S.works.length;
+  const reelItems = S.works.map((w, i) => `<a class="reel-item" href="#${esc(w.href)}" data-i="${i}" data-cur="view" aria-label="${esc(w.title)}"><img src="${esc(w.imageSmall || w.image)}" alt="" loading="lazy" decoding="async"><i>${pad2(i + 1)}</i></a>`).join('');
+  reelTrack.innerHTML = reelItems + reelItems.replace(/ href=/g, ' aria-hidden="true" tabindex="-1" href=');
   applyFilter('all', false);
 }
 function applyFilter(cat, animate = true) {
@@ -98,7 +118,7 @@ function applyFilter(cat, animate = true) {
   $$('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === cat)));
   $('#count').innerHTML = `<span>${esc(labels[cat])}</span><span>${pad2(n)} works</span>`;
   $$('.work:not([hidden])', list).forEach((li, k) => {
-    li.style.transitionDelay = S.view === 'grid' ? `${(k % 3) * 90}ms` : `${Math.min(k, 6) * 30}ms`;
+    li.style.transitionDelay = S.view === 'grid' ? `${(k % 4) * 80}ms` : `${Math.min(k, 6) * 30}ms`;
     observe(li);
   });
 }
@@ -112,13 +132,13 @@ $$('[data-filter]').forEach(b => b.addEventListener('click', () => applyFilter(b
 $$('.views [data-view]').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
 matchMedia('(max-width:900px)').addEventListener('change', e => { if (e.matches && S.view === 'list') setView('grid'); });
 
-list.addEventListener('click', e => {
-  const a = e.target.closest('.wlink');
+[list, reelTrack].forEach(host => host.addEventListener('click', e => {
+  const a = e.target.closest('.wlink, .reel-item');
   if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
   e.preventDefault();
   S.src = a; S.viaClick = true;
   location.hash = '#' + S.works[+a.dataset.i].href;
-});
+}));
 
 /* ---------- grid: prism flicker on hover ---------- */
 if (fine && !reduce) list.addEventListener('pointerenter', e => {
@@ -223,7 +243,15 @@ function morph(src, from, to, dur = 900) {
   });
 }
 function cardOf(i) { return $(`.work[data-i="${i}"]`, list); }
-function sourceRect(i) {
+function sourceRect(i, el) {
+  if (S.origin === 'reel') {
+    const cands = el ? [el] : $$(`.reel-item[data-i="${i}"]`, reelTrack);
+    for (const c of cands) {
+      const r = c.getBoundingClientRect();
+      if (r.width && r.right > 0 && r.left < innerWidth && r.bottom > 0 && r.top < innerHeight) return {left: r.left, top: r.top, width: r.width, height: r.height};
+    }
+    return null;
+  }
   const li = cardOf(i);
   if (!li || li.hidden) return null;
   let r;
@@ -338,10 +366,11 @@ async function openWork(i) {
   }
   S.open = i; S.busy = true; cursorReset();
   const returnTo = S.src; S.src = null;
+  S.origin = returnTo && returnTo.classList.contains('reel-item') ? 'reel' : 'card';
   buildDetail(i);
   detail.hidden = false; detail.classList.add('is-measuring'); dScroll.scrollTop = 0;
   body.classList.add('is-locked', 'is-detail'); inertAll(true);
-  const from = returnTo ? sourceRect(i) : null;
+  const from = returnTo ? sourceRect(i, S.origin === 'reel' ? returnTo : null) : null;
   const to = $('.d-hero', dEl).getBoundingClientRect();
   loadContent(i, token);
   if (from && !reduce) {
@@ -365,7 +394,7 @@ async function closeWork() {
   const visible = hr.bottom > 80 && hr.top < innerHeight * .8 && hr.width > 0;
   // Bring the card into view so the frame can land on it.
   const li = cardOf(i);
-  if (li && !li.hidden) {
+  if (S.origin !== 'reel' && li && !li.hidden) {
     const r = li.getBoundingClientRect();
     if (r.top < 60 || r.bottom > innerHeight - 20) li.scrollIntoView({block: 'center', behavior: 'instant'});
   }
@@ -465,7 +494,7 @@ async function boot() {
   try {
     const r = await fetch('/works.json'); S.works = await r.json();
   } catch (e) { list.innerHTML = '<li class="work in"><p>作品データを読み込めませんでした。</p></li>'; $('#intro') && $('#intro').remove(); body.classList.remove('is-loading'); return; }
-  S.view = matchMedia('(min-width:901px)').matches && fine ? 'list' : 'grid';
+  S.view = 'grid';
   list.dataset.view = S.view;
   $$('.views [data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === S.view)));
   render();
