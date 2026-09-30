@@ -1,4 +1,4 @@
-.scroll-background{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;--blend-start:100vh;--blend-end:calc(100vh + 240px);mask-image:linear-gradient(to bottom,transparent var(--blend-start),#000 var(--blend-end));-webkit-mask-image:linear-gradient(to bottom,transparent var(--blend-start),#000 var(--blend-end));background:#e7ebf3}
+.scroll-background{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;--blend-start:100vh;--blend-end:calc(100vh + 240px);mask-image:linear-gradient(to bottom,transparent var(--blend-start),#000 var(--blend-end));-webkit-mask-image:linear-gradient(to bottom,transparent var(--blend-start),#000 var(--blend-end));background-color:#f7f6f5;background-position:center;background-size:cover;background-repeat:no-repeat}
 .scroll-background video{width:100%;height:100%;object-fit:cover;display:block}
 .has-scroll-background>header,.has-scroll-background>main,.has-scroll-background>footer{position:relative;z-index:1}
 .has-scroll-background .works,.has-scroll-background .studio-block,.has-scroll-background .studio-block .about,.has-scroll-background .studio-block .contact,.has-scroll-background footer{background:transparent}
@@ -19,5 +19,3 @@
 .scroll-background.background-solid{mask-image:none;-webkit-mask-image:none}
 
 .has-scroll-background .eyebrow,.has-scroll-background .header-note,.has-scroll-background .archive-meta,.has-scroll-background .archive-work p,.has-scroll-background .about-copy p,.has-scroll-background footer{color:var(--muted)}
-
-html[data-media-ready=true] .scroll-background{background:#e7ebf3 url('/assets/scroll-background-color2.jpg') center/cover no-repeat}

@@ -10,17 +10,14 @@
  // A Blob remains seekable without relying on server byte-range support.
  let loading=false;
  function loadBackground(){
-  if(loading||reduced.matches||document.hidden)return;
+  if(loading)return;
   loading=true;
-  fetch(source,{priority:'low'}).then(response=>{
-   if(!response.ok)throw new Error('Background video unavailable');
-   return response.blob();
-  }).then(blob=>{
-   video.src=URL.createObjectURL(new Blob([blob],{type:'video/mp4'}));
-   video.load();
-  }).catch(()=>{loading=false;layer.dataset.videoState='unavailable'});
+  fetch(source).then(response=>{if(!response.ok)throw new Error('Background video unavailable');return response.blob()})
+   .then(blob=>{video.src=URL.createObjectURL(new Blob([blob],{type:'video/mp4'}));video.load()})
+   .catch(()=>{layer.dataset.videoState='unavailable'});
  }
-
+ window.addEventListener('mado:media-ready',loadBackground,{once:true});
+ if(window.madoDeferredMedia?.ready)loadBackground();
  function seek(){
   if(document.hidden||video.seeking||!Number.isFinite(video.duration)||reduced.matches)return;
   if(Math.abs(video.currentTime-target)<=1/48)return;
@@ -32,8 +29,6 @@
  function render(){
   scheduled=false;
   const top=start.getBoundingClientRect().top,viewport=innerHeight;
-  // Prioritize the logo; fetch the large background only near its section.
-  if(document.documentElement.dataset.mediaReady==='true')loadBackground();
   const blend=innerWidth<=760?160:240;
   const blending=top<viewport&&top+blend>0;
   layer.classList.toggle('background-solid',top+blend<=0);
@@ -55,7 +50,6 @@
  video.addEventListener('loadedmetadata',schedule);
  video.addEventListener('loadeddata',schedule);
  video.addEventListener('seeked',()=>{video.dataset.renderedTime=video.currentTime.toFixed(3);seek()});
- window.addEventListener('mado:media-ready',schedule);
  window.addEventListener('scroll',schedule,{passive:true});
  window.addEventListener('resize',schedule);
  window.addEventListener('pageshow',schedule);
