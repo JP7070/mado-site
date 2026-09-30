@@ -1,5 +1,12 @@
+/* Let only the top-page logo start empty; preserve the shared logo styles elsewhere. */
+.original-logo .logo-stage .logo-fallback{visibility:hidden}
+.original-logo .logo-stage:is(.is-finished,.show-fallback) .logo-fallback{visibility:visible}
+/* Works images emerge over the page itself; no card matte or blurred backing. */
+.archive-work .work-image{background:transparent}
+.archive-work .work-image .thumbnail-blur{display:none}
+.reveal-ready .archive-work:not(.is-revealed) .thumbnail-original{opacity:0}
 /* Study 03 — a sequence of windows, rather than a wall of cards. */
-.reveal-ready :is(.opening-work,.archive-work,.case-hero,.frame-gallery-grid figure,.stills figure):not(.is-revealed){opacity:0}
+.reveal-ready :is(.opening-work,.case-hero,.frame-gallery-grid figure,.stills figure):not(.is-revealed){opacity:0}
 @media(prefers-reduced-motion:reduce){.reveal-ready :is(.opening-work,.archive-work,.case-hero,.frame-gallery-grid figure,.stills figure){opacity:1!important}}
 header{height:84px;border-bottom:0}
 .hero{display:block;margin:0;padding:16px var(--gutter) 0;min-height:0}

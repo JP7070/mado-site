@@ -2,3 +2,5 @@ body{background:#e7ebf3;color:#272d39}.contact-page{width:min(760px,calc(100% - 
 
 /* Match the main page palette and prism background without another video. */
 body{--paper:#e7ebf3;--ink:#272d39;--muted:#636d7e;--line:#cbd2df;background:var(--paper);color:var(--ink)}body:before{content:"";position:fixed;inset:0;z-index:-1;background:url('/assets/scroll-background-color2.jpg') center/cover no-repeat}header,footer{background:transparent}.contact-field input,.contact-field textarea{border-color:var(--line)}.contact-note,.contact-direct,.contact-field span,footer{color:var(--muted)}::selection{background:#d4ddeb;color:var(--ink)}
+
+.contact-policy{margin:56px 0 0;font-size:12px;line-height:1.7;color:#535e70}.contact-policy p{margin:0 0 8px}.contact-policy p:last-child{margin-bottom:0}.contact-policy a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}.contact-policy a:focus-visible{outline:2px solid var(--ink);outline-offset:4px}@media(max-width:600px){.contact-policy{margin-top:44px;font-size:12px;line-height:1.7}}
