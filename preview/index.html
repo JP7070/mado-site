@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>mado — Preview</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#e7ebf3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23191919' d='M0 0h32v32H0z'/%3E%3Cpath fill='none' stroke='white' stroke-width='2' d='M8 8h16v16H8zM16 8v16'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;500&display=swap">
+<link rel="stylesheet" href="/preview/app.css?v=1">
+</head>
+<body class="is-loading">
+
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <filter id="split" x="-6%" y="-6%" width="112%" height="112%" color-interpolation-filters="sRGB">
+    <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r"/>
+    <feOffset in="r" dx="0" dy="0" result="ro" id="split-r"/>
+    <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="g"/>
+    <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="b"/>
+    <feOffset in="b" dx="0" dy="0" result="bo" id="split-b"/>
+    <feBlend in="ro" in2="g" mode="screen" result="rg"/>
+    <feBlend in="rg" in2="bo" mode="screen"/>
+  </filter>
+</svg>
+
+<a class="skip" href="#works">本文へスキップ</a>
+
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-win"></div><span class="intro-l">mado</span><span class="intro-n"><b id="intro-n">000</b>%</span></div>
+
+<!-- Viewfinder: the site is a window; the window is a frame. -->
+<div class="vf" aria-hidden="true">
+  <i class="vf-c tl"></i><i class="vf-c tr"></i><i class="vf-c bl"></i><i class="vf-c br"></i>
+  <span class="vf-t bl-t">TC <b id="tc">00:00:00:00</b></span>
+  <span class="vf-t br-t"><b id="tc-pct">000</b>%</span>
+</div>
+
+<header class="hd" id="top">
+  <a class="hd-mark" href="#top" aria-label="mado トップ">mado</a>
+  <p class="hd-note">Independent<br>Creative production</p>
+  <nav class="hd-nav" aria-label="ナビゲーション">
+    <a href="#works" data-cur="link">Works</a>
+    <a href="#about" data-cur="link">About</a>
+    <a href="/contact" data-cur="link">Contact <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" aria-label="mado">
+    <div class="hero-meta"><span>ANIMATION / CG / LIVE ACTION</span><span>TOKYO, JP <b id="clock">--:--</b></span></div>
+    <div class="stage" id="stage">
+      <picture class="stage-still"><img src="/assets/mado-logo-still.png" alt="" width="1547" height="1026" decoding="async"></picture>
+      <video id="logo" muted playsinline webkit-playsinline preload="auto" aria-label="madoのロゴアニメーション">
+        <source media="(max-width: 760px)" src="/assets/mado-logo-mobile-optimized.mp4" type="video/mp4">
+        <source src="/assets/mado-logo-desktop-optimized.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-foot"><span class="hero-cue">Scroll <i aria-hidden="true"></i></span><span class="hero-count"><b id="hero-count">44</b> selected works</span></div>
+  </section>
+
+  <section class="works" id="works" aria-labelledby="works-h">
+    <div class="works-head">
+      <h2 id="works-h" class="display"><span class="mask"><span>Works</span></span></h2>
+      <div class="works-tools">
+        <div class="filters" role="group" aria-label="カテゴリ">
+          <button type="button" data-filter="all" aria-pressed="true" data-cur="link">すべて</button>
+          <button type="button" data-filter="anime" aria-pressed="false" data-cur="link">TVアニメ</button>
+          <button type="button" data-filter="commercial" aria-pressed="false" data-cur="link">広告・CM</button>
+          <button type="button" data-filter="spatial" aria-pressed="false" data-cur="link">空間演出</button>
+        </div>
+        <div class="views" role="group" aria-label="表示切り替え">
+          <button type="button" data-view="list" aria-pressed="true" data-cur="link"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 5h16M2 10h16M2 15h16"/></svg><span>Index</span></button>
+          <button type="button" data-view="grid" aria-pressed="false" data-cur="link"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h5v5H3zM12 3h5v5h-5zM3 12h5v5H3zM12 12h5v5h-5z"/></svg><span>Grid</span></button>
+        </div>
+      </div>
+    </div>
+    <p class="works-count" id="count" aria-live="polite"></p>
+    <ol class="wlist" id="wlist" data-view="list"></ol>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="about-h">
+    <div class="about-bg" aria-hidden="true"></div>
+    <div class="about-in">
+      <h2 id="about-h" class="display"><span class="mask"><span>About mado</span></span></h2>
+      <div class="about-body">
+        <p class="lead">フレームの中に風景が広がる映像の概念から。私とあなた、内と外、作り手と視聴者を繋ぐ透明な境界、窓。</p>
+        <p>madoはアニメーション・CG・実写を融合させ、多彩な映像表現を提案・制作するクリエイティブプロダクションです。</p>
+      </div>
+      <a class="contact-cta" href="/contact" data-cur="link"><span class="display">Contact</span><span class="contact-jp">お問い合わせ <i aria-hidden="true">↗</i></span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="ft">
+  <a class="ft-mark" href="#top" data-cur="link">mado</a>
+  <span>© 株式会社mado</span>
+  <a href="#top" data-cur="link">Back to top ↑</a>
+</footer>
+
+<!-- Work detail: opens from the clicked frame, like a window widening. -->
+<div class="detail" id="detail" role="dialog" aria-modal="true" aria-label="作品詳細" hidden>
+  <div class="d-bar">
+    <button type="button" class="d-close" id="d-close" data-cur="close">← <span>Works</span></button>
+    <span class="d-index" id="d-index"></span>
+    <button type="button" class="d-close d-x" id="d-x" data-cur="close" aria-label="閉じる"><span>Close</span> ×</button>
+  </div>
+  <div class="d-scroll" id="d-scroll"><article class="d" id="d"></article></div>
+</div>
+
+<div class="peek" id="peek" aria-hidden="true"><img alt=""><img alt=""></div>
+<div class="cur" id="cur" aria-hidden="true"><i class="cur-f"></i><span class="cur-l"></span></div>
+
+<script src="/preview/app.js?v=1" defer></script>
+</body>
+</html>
