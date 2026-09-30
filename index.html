@@ -53,7 +53,19 @@ body>header:before{content:"";position:absolute;inset:0 auto 0 50%;width:100vw;t
 .studio-block .contact-link{margin-top:34px}
 @media(max-width:1000px){:root{--section-heading-size:64px}}
 @media(max-width:760px){:root{--section-heading-size:clamp(44px,10vw,66px)}}
-@media(min-width:1001px){body>footer{margin-left:max(40px,calc((100vw - 2000px)/2));margin-right:max(40px,calc((100vw - 2000px)/2));padding-left:0;padding-right:0}}</style><link rel="stylesheet" href="/prism.css?v=2"><link rel="stylesheet" href="/scroll-background.css?v=10"><!-- SEO:START -->
+@media(min-width:1001px){body>footer{margin-left:max(40px,calc((100vw - 2000px)/2));margin-right:max(40px,calc((100vw - 2000px)/2));padding-left:0;padding-right:0}}
+/* Scale the enlarged text down on narrower desktop windows so its proportion matches the layout seen at ~1500px. */
+@media(min-width:1001px){
+body>header .wordmark{font-size:min(56px,3.76vw)}
+body>header .header-note{font-size:min(18px,1.21vw)}
+body>header nav{font-size:min(28px,1.88vw)}
+.archive-meta{font-size:max(12px,min(16px,1.07vw))}
+.archive-meta>span:last-child:after{font-size:max(14px,min(18px,1.21vw))}
+.archive-work h3{font-size:max(15px,min(20px,1.34vw))}
+.archive-work p{font-size:max(13px,min(18px,1.21vw))}
+.studio-block .about-copy p{font-size:min(26px,1.75vw)}
+}
+</style><link rel="stylesheet" href="/prism.css?v=2"><link rel="stylesheet" href="/scroll-background.css?v=10"><!-- SEO:START -->
 <title>株式会社mado｜アニメーション・CG・VFX・映像制作</title>
 <meta name="description" content="株式会社madoは、アニメーション・CG・実写を融合した映像表現を提案・制作するクリエイティブプロダクションです。TVアニメ、広告・CM、ライブ・空間演出の制作実績と担当内容をご紹介します。">
 <link rel="canonical" href="https://www.mado-creative.com/">
