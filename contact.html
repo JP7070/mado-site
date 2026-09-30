@@ -24,14 +24,14 @@
 <!-- SEO:END -->
 </head>
 <body><a class="skip" href="#main">本文へスキップ</a><header><a class="wordmark" href="/" aria-label="mado トップ">mado</a><nav aria-label="ナビゲーション"><a href="/#works">Works</a><a href="/#about">About</a></nav></header>
-<main id="main" class="contact-page"><h1>Contact</h1><form action="https://formsubmit.co/mukai@mado-creative.com" method="POST">
-<input type="hidden" name="_subject" value="【mado】Webサイトからのお問い合わせ"><input type="hidden" name="_template" value="table"><input type="hidden" name="_next" value="https://www.mado-creative.com/contact-thanks">
-<div class="contact-trap" aria-hidden="true"><label>この欄は空欄にしてください<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+<main id="main" class="contact-page"><h1>Contact</h1><form action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value="6cf300b3-0298-4c3e-8a31-9fe54ccda170"><input type="hidden" name="subject" value="【mado】Webサイトからのお問い合わせ"><input type="hidden" name="from_name" value="mado Webサイト"><input type="hidden" name="redirect" value="https://www.mado-creative.com/contact-thanks">
+<div class="contact-trap" aria-hidden="true"><label>この欄は空欄にしてください<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label></div>
 <label class="contact-field" for="name">お名前 <span>必須</span><input id="name" name="name" autocomplete="name" maxlength="120" required></label>
 <label class="contact-field" for="company">会社名<input id="company" name="company" autocomplete="organization" maxlength="200"></label>
 <label class="contact-field" for="email">メールアドレス <span>必須</span><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required></label>
 <label class="contact-field" for="message">お問い合わせ内容 <span>必須</span><textarea id="message" name="message" rows="6" maxlength="10000" required></textarea></label>
-<p class="contact-note">ご入力いただいた情報は、お問い合わせへの対応に使用します。送信にはFormSubmitを利用します。</p><button class="contact-submit" type="submit">送信する <span aria-hidden="true">↗</span></button>
+<p class="contact-note">ご入力いただいた情報は、お問い合わせへの対応に使用します。送信にはWeb3Formsを利用します。</p><button class="contact-submit" type="submit">送信する <span aria-hidden="true">↗</span></button>
 </form><p class="contact-direct">メールでのご連絡：<a href="mailto:mukai@mado-creative.com">mukai@mado-creative.com</a></p><div class="contact-policy"><p>弊社では『カスタマーハラスメントについての基本方針』を策定・実施しております。</p><p>詳しくは<a href="https://drive.google.com/file/d/1DBMOoYHsmcc9faCmb83EtLU0r8Lgx9AE/view?usp=drive_link">こちら</a>をご覧下さい。</p></div></main>
 <footer><a class="wordmark" href="/">mado</a><span>© 株式会社mado</span></footer>
-<script>document.querySelector('[name="_next"]').value=new URL('/contact-thanks.html',location.origin).href;</script></body></html>
+<script>document.querySelector('[name="redirect"]').value=new URL('/contact-thanks.html',location.origin).href;</script></body></html>
