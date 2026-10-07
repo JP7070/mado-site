@@ -100,7 +100,7 @@ function render() {
   list.innerHTML = S.works.map((w, i) => `
 <li class="work" data-i="${i}" data-cat="${esc(w.category)}"><a class="wlink" href="#${esc(w.href)}" data-cur="view" data-i="${i}">
 <span class="wthumb"><img src="${esc(w.imageSmall || w.image)}" alt="" width="480" height="360" loading="lazy" decoding="async"></span>
-<span class="wtext"><span class="wnum">${pad2(i + 1)}</span><span class="wcat">${esc(w.label)}</span><span class="warrow" aria-hidden="true">↗</span>
+<span class="wtext"><span class="wnum">${pad2(i + 1)}</span><span class="wcat">${esc(w.label)}${w.year ? ` · ${w.year}` : ''}</span><span class="warrow" aria-hidden="true">↗</span>
 <span class="wtitle">${esc(w.title)}</span><span class="wscope">${esc(w.scope || '')}</span></span></a></li>`).join('');
   $('#hero-count').textContent = S.works.length;
   const reelItems = S.works.map((w, i) => `<a class="reel-item" href="#${esc(w.href)}" data-i="${i}" data-cur="view" aria-label="${esc(w.title)}"><img src="${esc(w.imageSmall || w.image)}" alt="" loading="lazy" decoding="async"><i>${pad2(i + 1)}</i></a>`).join('');
@@ -272,6 +272,7 @@ function buildDetail(i) {
 <div class="d-head">
   <div class="d-side"><dl>
     <div><dt>Category</dt><dd>${esc(w.label)}</dd></div>
+    ${w.year ? `<div><dt>Year</dt><dd>${w.year}</dd></div>` : ''}
     <div><dt>担当範囲</dt><dd>${esc(w.scope || '—')}</dd></div>
     <div><dt>No.</dt><dd>${pad2(i + 1)} / ${pad2(n)}</dd></div>
   </dl></div>
