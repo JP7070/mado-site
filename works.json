@@ -291,18 +291,6 @@
     "imageSmall": "/assets/thumbnails/0a2d5095-0661-48c9-8a1d-b8b125d5d3c6-480.webp"
   },
   {
-    "id": "bf31419f-3d37-4d0c-8cda-d2a70fa91d06",
-    "category": "spatial",
-    "label": "空間演出",
-    "title": "HYDE LIVE2023",
-    "scope": "オープニング映像制作",
-    "year": 2023,
-    "image": "/assets/thumbnails/bf31419f-3d37-4d0c-8cda-d2a70fa91d06-960.webp",
-    "href": "/hyde2023",
-    "sourceImage": "https://static.wixstatic.com/media/b4500b_1ea993c4f1a7476aac707544b271dc35~mv2.jpg/v1/fit/w_960,h_960,q_85/b4500b_1ea993c4f1a7476aac707544b271dc35~mv2.jpg",
-    "imageSmall": "/assets/thumbnails/bf31419f-3d37-4d0c-8cda-d2a70fa91d06-480.webp"
-  },
-  {
     "id": "70f2c172-4902-4b4d-96a4-57ef7b356f93",
     "category": "anime",
     "label": "TVアニメ",
@@ -313,6 +301,18 @@
     "href": "/nichi5",
     "sourceImage": "https://static.wixstatic.com/media/b4500b_ebb1f678451c4168a509e03d7cc3ec24~mv2.jpg/v1/fit/w_960,h_960,q_85/b4500b_ebb1f678451c4168a509e03d7cc3ec24~mv2.jpg",
     "imageSmall": "/assets/thumbnails/70f2c172-4902-4b4d-96a4-57ef7b356f93-480.webp"
+  },
+  {
+    "id": "bf31419f-3d37-4d0c-8cda-d2a70fa91d06",
+    "category": "spatial",
+    "label": "空間演出",
+    "title": "HYDE LIVE2023",
+    "scope": "オープニング映像制作",
+    "year": 2023,
+    "image": "/assets/thumbnails/bf31419f-3d37-4d0c-8cda-d2a70fa91d06-960.webp",
+    "href": "/hyde2023",
+    "sourceImage": "https://static.wixstatic.com/media/b4500b_1ea993c4f1a7476aac707544b271dc35~mv2.jpg/v1/fit/w_960,h_960,q_85/b4500b_1ea993c4f1a7476aac707544b271dc35~mv2.jpg",
+    "imageSmall": "/assets/thumbnails/bf31419f-3d37-4d0c-8cda-d2a70fa91d06-480.webp"
   },
   {
     "id": "4379c148-cf0b-43ee-8459-404b05b82226",
