@@ -1,5 +1,16 @@
 [
   {
+    "id": "b6a3e85d-e09b-49ee-be93-f01c0b4916bd",
+    "category": "anime",
+    "label": "TVアニメ",
+    "title": "『転生したら剣でしたII』",
+    "scope": "OP 演出・撮影 / ED 撮影",
+    "image": "/assets/thumbnails/b6a3e85d-e09b-49ee-be93-f01c0b4916bd-960.webp",
+    "href": "/tensei-ken2",
+    "sourceImage": "https://i.ytimg.com/vi/4FCUWOqNwCc/maxresdefault.jpg",
+    "imageSmall": "/assets/thumbnails/b6a3e85d-e09b-49ee-be93-f01c0b4916bd-480.webp"
+  },
+  {
     "id": "00ec09f3-0d45-4abf-9400-d9788e3ae408",
     "category": "anime",
     "label": "TVアニメ",
